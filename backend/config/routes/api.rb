@@ -5,9 +5,10 @@ namespace :api do
     scope :users, module: :users do
       post '/', to: 'registrations#create'
       # post 'sign_in', to: 'sessions#create'
-      
     end
     resources :items
+    resources :categories
+    get 'users/current', to: 'users#current'
   end
 end
 
