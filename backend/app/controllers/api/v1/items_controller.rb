@@ -1,20 +1,9 @@
 class Api::V1::ItemsController < ApiController
   before_action :set_item, only: %i[show update destroy]
-
   # GET /items
   def index
     @items = current_user.items
-    array_of_categories = current_user.categories.map(&:attributes)
-    current_user.categories.each_with_index do |category, index|
-      array_of_items = @items.map(&:attributes)
-    end
-
-    render json: array_of_categories
-  end
-
-  # GET /items/1
-  def show
-    render json: @item
+    render json: @items
   end
 
   # POST /items

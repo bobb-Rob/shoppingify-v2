@@ -12,116 +12,116 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/lists", type: :request do
+RSpec.describe '/lists', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # List. As you add validations to List, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # ListsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
+  let(:valid_headers) do
     {}
-  }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       List.create! valid_attributes
       get lists_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       list = List.create! valid_attributes
       get list_url(list), as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new List" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new List' do
+        expect do
           post lists_url,
                params: { list: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(List, :count).by(1)
+        end.to change(List, :count).by(1)
       end
 
-      it "renders a JSON response with the new list" do
+      it 'renders a JSON response with the new list' do
         post lists_url,
              params: { list: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new List" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new List' do
+        expect do
           post lists_url,
                params: { list: invalid_attributes }, as: :json
-        }.to change(List, :count).by(0)
+        end.to change(List, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new list" do
+      it 'renders a JSON response with errors for the new list' do
         post lists_url,
              params: { list: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested list" do
+      it 'updates the requested list' do
         list = List.create! valid_attributes
         patch list_url(list),
               params: { list: new_attributes }, headers: valid_headers, as: :json
         list.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "renders a JSON response with the list" do
+      it 'renders a JSON response with the list' do
         list = List.create! valid_attributes
         patch list_url(list),
               params: { list: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the list" do
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the list' do
         list = List.create! valid_attributes
         patch list_url(list),
               params: { list: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested list" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested list' do
       list = List.create! valid_attributes
-      expect {
+      expect do
         delete list_url(list), headers: valid_headers, as: :json
-      }.to change(List, :count).by(-1)
+      end.to change(List, :count).by(-1)
     end
   end
 end

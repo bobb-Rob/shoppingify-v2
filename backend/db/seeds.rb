@@ -21,7 +21,7 @@
 #   "email": "johndoe@g.com",
 #   "password": "password",
 #   "client_id": "TMoOlJ0URCR917tR7O5pq7nBrqfBtpBjEsI9bFr3ja0",
-#   "client_secret": "7E0QFep8vl48pL0NHJGMN57Aj13tz0OZf_8_ykTAik4" 
+#   "client_secret": "7E0QFep8vl48pL0NHJGMN57Aj13tz0OZf_8_ykTAik4"
 # }
 
 # create Item
@@ -39,13 +39,12 @@
 
 # create Oauth client using doorkeeper gem
 if Doorkeeper::Application.count.zero?
-  Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")
-  Doorkeeper::Application.create(name: "Android client", redirect_uri: "", scopes: "")
-  Doorkeeper::Application.create(name: "React", redirect_uri: "", scopes: "")
+  Doorkeeper::Application.create(name: 'iOS client', redirect_uri: '', scopes: '')
+  Doorkeeper::Application.create(name: 'Android client', redirect_uri: '', scopes: '')
+  Doorkeeper::Application.create(name: 'React', redirect_uri: '', scopes: '')
 end
 
-User.first_or_create!(email: "robertson@dev.io",
-  password: "password", 
-  password_confirmation: "password",
-  role: User.roles[:admin])
-  
+User.first_or_create!(email: 'robertson@dev.io',
+                      password: 'password',
+                      password_confirmation: 'password',
+                      role: User.roles[:admin])
