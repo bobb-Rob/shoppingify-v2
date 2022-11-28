@@ -10,7 +10,7 @@ class Api::V1::ItemsController < ApiController
   def create
     @item = Item.new(item_params)
 
-    if @item.save
+    if @item.save    
       render json: @item, status: :created
     else
       render json: @item.errors, status: :unprocessable_entity
@@ -28,7 +28,12 @@ class Api::V1::ItemsController < ApiController
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    deleted_item = @item.dup
+    if @item.destroy
+      render json: { message: "Item deleted" }, status: :ok
+    else
+      render json: @item.errors, status: :unprocessable_entity
+    end
   end
 
   private

@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
-  resources :lists
-  resources :categories
+Rails.application.routes.draw do  
   root 'items#index'
 
   use_doorkeeper

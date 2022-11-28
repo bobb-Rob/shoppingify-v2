@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Sign up a user
+
 # {
 #   "first_name": "John",
 #   "last_name": "Doe",
@@ -20,8 +21,8 @@
 #   "grant_type": "password",
 #   "email": "johndoe@g.com",
 #   "password": "password",
-#   "client_id": "TMoOlJ0URCR917tR7O5pq7nBrqfBtpBjEsI9bFr3ja0",
-#   "client_secret": "7E0QFep8vl48pL0NHJGMN57Aj13tz0OZf_8_ykTAik4"
+#   "client_id": "-ud2l-0bDZgA0-8DQshETRyY7hw52vVfgNN31k6CSnQ",
+#   "client_secret": "k0zYwVpAJVtLT675yKxxihU4owMmrQ5LIv-2XQI3PMM"
 # }
 
 # create Item
