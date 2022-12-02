@@ -13,7 +13,7 @@ class Api::V1::ItemsController < ApiController
     if @item.save    
       render json: @item, status: :created
     else
-      render json: @item.errors, status: :unprocessable_entity
+      render json: {errors: @item.errors.full_messages, status: 422 }, status: :unprocessable_entity
     end
   end
 

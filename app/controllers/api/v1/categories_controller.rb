@@ -35,7 +35,11 @@ class Api::V1::CategoriesController < ApiController
 
   # DELETE /categories/1
   def destroy
-    @category.destroy
+    if @category.destroy
+      render json: { message: "Category deleted" }, status: :ok
+    else
+      render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
