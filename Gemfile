@@ -16,7 +16,7 @@ gem 'puma', '~> 5.0'
 # gem "jbuilder"
 
 # install byebug for debugging
-gem 'byebug', '~> 11.1', '>= 11.1.3' 
+gem 'byebug', '~> 11.1', '>= 11.1.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

@@ -13,7 +13,7 @@ class Api::V1::ItemsController < ApiController
     if @item.save
       render json: @item, status: :created
     else
-      render json: @item.errors, status: :unprocessable_entity
+      render json: { errors: @item.errors.full_messages, status: 422 }, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,12 @@ class Api::V1::ItemsController < ApiController
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    deleted_item = @item.dup
+    if @item.destroy
+      render json: { message: 'Item deleted', deleted_item: }, status: :ok
+    else
+      render json: @item.errors, status: :unprocessable_entity
+    end
   end
 
   private

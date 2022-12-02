@@ -3,7 +3,7 @@ class Api::V1::CategoriesController < ApiController
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = current_user.categories
 
     render json: @categories, each_serializer: CategorySerializer
   end
@@ -20,7 +20,7 @@ class Api::V1::CategoriesController < ApiController
     if @category.save
       render json: @category, status: :created
     else
-      render json: @category.errors, status: :unprocessable_entity
+      render json: @category.errors, message: 'Category not created', status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,11 @@ class Api::V1::CategoriesController < ApiController
 
   # DELETE /categories/1
   def destroy
-    @category.destroy
+    if @category.destroy
+      render json: { message: 'Category deleted' }, status: :ok
+    else
+      render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
@@ -47,6 +51,6 @@ class Api::V1::CategoriesController < ApiController
 
   # Only allow a list of trusted parameters through.
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :user_id)
   end
 end

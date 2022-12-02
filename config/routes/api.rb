@@ -6,6 +6,8 @@ namespace :api do
     end
     resources :items
     resources :categories
+    resources :records
+    resources :lists
     get 'users/current', to: 'users#current'
   end
 end
