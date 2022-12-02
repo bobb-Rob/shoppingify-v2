@@ -30,7 +30,7 @@ class Api::V1::ItemsController < ApiController
   def destroy
     deleted_item = @item.dup
     if @item.destroy
-      render json: { message: 'Item deleted' }, status: :ok
+      render json: { message: 'Item deleted', deleted_item: }, status: :ok
     else
       render json: @item.errors, status: :unprocessable_entity
     end
