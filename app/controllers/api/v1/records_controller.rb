@@ -1,10 +1,10 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: %i[ show update destroy ]
+  before_action :set_record, only: %i[show update destroy]
 
   # GET /records
   def index
     # get records for current user
-    
+
     @records = Record.all
 
     render json: @records
@@ -41,13 +41,14 @@ class RecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_record
-      @record = Record.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def record_params
-      params.fetch(:record, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_record
+    @record = Record.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def record_params
+    params.fetch(:record, {})
+  end
 end

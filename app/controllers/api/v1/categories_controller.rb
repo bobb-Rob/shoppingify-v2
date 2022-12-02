@@ -20,7 +20,7 @@ class Api::V1::CategoriesController < ApiController
     if @category.save
       render json: @category, status: :created
     else
-      render json: @category.errors, message: "Category not created" , status: :unprocessable_entity
+      render json: @category.errors, message: 'Category not created', status: :unprocessable_entity
     end
   end
 
@@ -36,7 +36,7 @@ class Api::V1::CategoriesController < ApiController
   # DELETE /categories/1
   def destroy
     if @category.destroy
-      render json: { message: "Category deleted" }, status: :ok
+      render json: { message: 'Category deleted' }, status: :ok
     else
       render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
     end
