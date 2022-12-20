@@ -1,4 +1,4 @@
-class ListsController < ApiController
+class Api::V1::ListsController < ApiController
   before_action :set_list, only: %i[show update destroy]
 
   # GET /lists
