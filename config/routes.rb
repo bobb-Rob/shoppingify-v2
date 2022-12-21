@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'api#get_react_client_credentials'
+  root 'client#index'
 
   use_doorkeeper
   devise_for :users
