@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!, except: :get_client_credentials,
 
   # skip_before_action :verify_authenticity_token
 
@@ -12,6 +12,12 @@ class ApiController < ApplicationController
 
     @current_user ||= User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
   end
+
+  def get_client_credentials
+    @react = Doorkeeper::Application.last
+    render_json: @react
+  end
+
 
   # # Verify
   #   def verify_authenticity_token
