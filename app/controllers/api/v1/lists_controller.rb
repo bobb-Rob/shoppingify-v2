@@ -3,7 +3,7 @@ class Api::V1::ListsController < ApiController
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = current_user.lists
 
     render json: @lists
   end
