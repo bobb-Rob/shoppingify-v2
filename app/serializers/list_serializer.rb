@@ -1,8 +1,10 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :name, :status, :categories
+  attributes :id, :name, :status, :items
   
-  def categories
-    List.select('lists.id, lists.name, records.quantity').joins(:records)
-    Record.where("item_id = ")
+  # has_many :items
+  has_many :records
+
+  def items
+    object.items
   end
 end
