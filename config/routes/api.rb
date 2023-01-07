@@ -8,6 +8,7 @@ namespace :api do
     resources :categories
     resources :records
     resources :lists
+    get 'list/active', to: 'lists#active'
     get 'users/current', to: 'users#current'
   end
 end

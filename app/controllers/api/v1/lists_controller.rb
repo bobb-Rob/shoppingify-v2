@@ -8,6 +8,14 @@ class Api::V1::ListsController < ApiController
     render json: @lists
   end
 
+  # Get single active list - /lists/active
+  def active
+    # Find the list with status: active - Since only one list can have the value active.
+    @list = List.all.find { |list| list.status === 'active' }
+    render json: @list
+  end
+
+
   # GET /lists/1
   def show
     render json: @list
