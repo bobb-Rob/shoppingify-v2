@@ -4,6 +4,6 @@ class Item < ApplicationRecord
   has_many :records
   has_many :lists, through: :records
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :user_id}
   validates :note, :user, :category, presence: true
 end

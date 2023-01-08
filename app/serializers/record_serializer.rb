@@ -1,5 +1,5 @@
 class RecordSerializer < ActiveModel::Serializer
-  attributes :id, :quantity
+  attributes :id
  
   belongs_to :item
 

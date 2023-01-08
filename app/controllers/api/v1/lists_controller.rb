@@ -11,8 +11,12 @@ class Api::V1::ListsController < ApiController
   # Get single active list - /lists/active
   def active
     # Find the list with status: active - Since only one list can have the value active.
-    @list = List.all.find { |list| list.status === 'active' }
-    render json: @list
+    @list = current_user.lists.find { |list| list.status === 'active' }
+    if @list
+      render json: @list
+    else
+      render json: { status: 'There is no active list', list: {}}
+    end
   end
 
 
