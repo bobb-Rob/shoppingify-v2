@@ -1,5 +1,5 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :name, :status, :items
+  attributes :id, :name, :status, :records
   
-  has_many :items  
+  has_many :records  
 end
