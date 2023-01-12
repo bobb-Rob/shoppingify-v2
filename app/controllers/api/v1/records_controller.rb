@@ -34,9 +34,10 @@ class Api::V1::RecordsController < ApplicationController
 
   # DELETE /records/1
   def destroy   
-    deleted_record = @record.dup
+    deleted_record = @record.deep_dup
+    category_name = @record.item.category.name
     if  @record.destroy
-      render json: { message: 'record deleted', deleted_record: }, status: :ok
+      render json: { message: 'record deleted', item_category_name: category_name, deleted_record: }, status: :ok
     else
       render json: @record.errors, status: :unprocessable_entity
     end
