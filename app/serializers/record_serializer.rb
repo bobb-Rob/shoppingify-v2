@@ -10,7 +10,8 @@ class RecordSerializer < ActiveModel::Serializer
       note: object.item.note,
       image: object.item.image,
       categoryName: object.item.category.name,
-      quantity: object.quantity
+      quantity: object.quantity,
+      recordId: object.id
     }
   end
 end

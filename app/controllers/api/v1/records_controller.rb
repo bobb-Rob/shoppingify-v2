@@ -1,5 +1,5 @@
 class Api::V1::RecordsController < ApplicationController
-  before_action :set_record, only: %i[show update destroy]
+  before_action :set_record, only: %i[update destroy]
 
   # GET /records
   def index
@@ -11,9 +11,6 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   # GET /records/1
-  def show
-    render json: @record
-  end
 
   # POST /records
   def create
@@ -36,8 +33,13 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   # DELETE /records/1
-  def destroy
-    @record.destroy
+  def destroy   
+    deleted_record = @record.dup
+    if  @record.destroy
+      render json: { message: 'record deleted', deleted_record: }, status: :ok
+    else
+      render json: @record.errors, status: :unprocessable_entity
+    end
   end
 
   private
