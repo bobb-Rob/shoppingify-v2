@@ -1,5 +1,5 @@
 class Api::V1::ListsController < ApiController
-  before_action :set_list, only: %i[show update destroy]
+  before_action :set_list, only: %i[update]
 
   # GET /lists
   def index
@@ -17,12 +17,6 @@ class Api::V1::ListsController < ApiController
     else
       render json: { status: 'There is no active list', list: {}}
     end
-  end
-
-
-  # GET /lists/1
-  def show
-    render json: @list
   end
 
   # POST /lists
@@ -43,11 +37,6 @@ class Api::V1::ListsController < ApiController
     else
       render json: @list.errors, status: :unprocessable_entity
     end
-  end
-
-  # DELETE /lists/1
-  def destroy
-    @list.destroy
   end
 
   private

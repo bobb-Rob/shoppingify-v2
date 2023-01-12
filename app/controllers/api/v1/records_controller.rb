@@ -20,9 +20,9 @@ class Api::V1::RecordsController < ApplicationController
     @record = Record.new(record_params)
 
     if @record.save
-      render json: @record, status: :created, location: @record
+      render json: @record, status: :created
     else
-      render json: @record.errors, status: :unprocessable_entity
+      render json: { errors: @record.errors, status: 422 }, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,6 @@ class Api::V1::RecordsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def record_params
-    params.fetch(:record, {})
+    params.require(:record).permit(:item_id, :list_id, :quantity)
   end
 end
