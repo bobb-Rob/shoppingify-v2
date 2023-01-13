@@ -11,6 +11,7 @@ class RecordSerializer < ActiveModel::Serializer
       image: object.item.image,
       categoryName: object.item.category.name,
       quantity: object.quantity,
+      completed: object.completed,
       recordId: object.id
     }
   end
