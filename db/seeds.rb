@@ -49,3 +49,10 @@ User.first_or_create!(email: 'robertson@dev.io',
                       password: 'password',
                       password_confirmation: 'password',
                       role: User.roles[:admin])
+
+#                       {
+#     "name": "React",
+#     "client_id": "ygliYZcduucRdto0TZyQnhfFcgovWC61OTz-VA2Yj9E",
+#     "client_secret": "QgamqEEWPkn5IPUkwV-qfLwRemQlp-2H6grwJNPA2e0",
+#     "created_at": "2022-12-21T00:24:42.930Z"
+# }

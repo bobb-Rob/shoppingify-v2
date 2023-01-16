@@ -1,5 +1,5 @@
 class Api::V1::RecordsController < ApplicationController
-  before_action :set_record, only: %i[show update destroy]
+  before_action :set_record, only: %i[update destroy]
 
   # GET /records
   def index
@@ -11,18 +11,15 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   # GET /records/1
-  def show
-    render json: @record
-  end
 
   # POST /records
   def create
     @record = Record.new(record_params)
 
     if @record.save
-      render json: @record, status: :created, location: @record
+      render json: @record, status: :created
     else
-      render json: @record.errors, status: :unprocessable_entity
+      render json: { errors: @record.errors, status: 422 }, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +34,13 @@ class Api::V1::RecordsController < ApplicationController
 
   # DELETE /records/1
   def destroy
-    @record.destroy
+    deleted_record = @record.deep_dup
+    category_name = @record.item.category.name
+    if @record.destroy
+      render json: { message: 'record deleted', item_category_name: category_name, deleted_record: }, status: :ok
+    else
+      render json: @record.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -49,6 +52,6 @@ class Api::V1::RecordsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def record_params
-    params.fetch(:record, {})
+    params.require(:record).permit(:item_id, :list_id, :quantity)
   end
 end

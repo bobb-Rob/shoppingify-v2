@@ -1,16 +1,22 @@
 class Api::V1::ListsController < ApiController
-  before_action :set_list, only: %i[show update destroy]
+  before_action :set_list, only: %i[update]
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = current_user.lists
 
     render json: @lists
   end
 
-  # GET /lists/1
-  def show
-    render json: @list
+  # Get single active list - /list/active
+  def active
+    # Find the list with status: active - Since only one list can have the value active.
+    @list = current_user.lists.find { |list| list.status === 'active' } # rubocop:disable Style/CaseEquality
+    if @list
+      render json: @list
+    else
+      render json: { status: 'There is no active list', list: {} }
+    end
   end
 
   # POST /lists
@@ -31,11 +37,6 @@ class Api::V1::ListsController < ApiController
     else
       render json: @list.errors, status: :unprocessable_entity
     end
-  end
-
-  # DELETE /lists/1
-  def destroy
-    @list.destroy
   end
 
   private
