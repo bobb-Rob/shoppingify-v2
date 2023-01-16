@@ -4,5 +4,5 @@ class ItemSerializer < ActiveModel::Serializer
 
   def category_name
     object.category.name
-  end 
+  end
 end
