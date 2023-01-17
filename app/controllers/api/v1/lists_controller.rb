@@ -15,7 +15,7 @@ class Api::V1::ListsController < ApiController
     if @list
       render json: @list
     else
-      render json: { status: 'There is no active list', list: {} }
+      render json: { errors: @list.errors.full_messages, status: 'There is no active list', list: {} }
     end
   end
 
