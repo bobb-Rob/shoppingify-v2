@@ -48,6 +48,6 @@ class Api::V1::ListsController < ApiController
 
   # Only allow a list of trusted parameters through.
   def list_params
-    params.require(:list).permit(:name, :status, :user_id)
+    params.require(:list).permit(:name, :status, :user_id, :completed)
   end
 end
