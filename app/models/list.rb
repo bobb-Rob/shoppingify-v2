@@ -7,6 +7,6 @@ class List < ApplicationRecord
   validates :status, uniqueness: { scope: :user_id }, unless: :value_is_cancel_or_complete?
 
   def value_is_cancel_or_complete?
-    (status == "cancel") || (status == "complete")
+    (status == 'cancel') || (status == 'complete')
   end
 end

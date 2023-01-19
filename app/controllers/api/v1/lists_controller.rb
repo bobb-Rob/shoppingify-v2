@@ -11,12 +11,12 @@ class Api::V1::ListsController < ApiController
   # Get single active list - /list/active
   def active
     # Find the list with status: active - Since only one list can have the value active.
-    # @list = current_user.lists.find { |list| list.status === 'active' } # rubocop:disable Style/CaseEquality
+    # @list = current_user.lists.find { |list| list.status === 'active' }
     @list = List.where(status: 'active', user_id: current_user)[0]
     if @list
       render json: @list
-    else     
-      render json: { id: nil, name: 'shopping List', status: "No active list" }, status: :unprocessable_entity
+    else
+      render json: { id: nil, name: 'shopping List', status: 'No active list' }, status: :unprocessable_entity
     end
   end
 
