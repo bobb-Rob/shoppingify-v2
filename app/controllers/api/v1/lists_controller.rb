@@ -15,8 +15,8 @@ class Api::V1::ListsController < ApiController
     @list = List.where(status: 'active', user_id: current_user)[0]
     if @list
       render json: @list
-    else
-      render json: { name: '', records: [], items: [], status: 'There is no active list' }
+    else     
+      render json: { id: nil, name: 'shopping List', status: "No active list" }, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,6 @@ class Api::V1::ListsController < ApiController
 
   # Only allow a list of trusted parameters through.
   def list_params
-    params.require(:list).permit(:name, :status, :user_id, :completed)
+    params.require(:list).permit(:name, :status, :user_id)
   end
 end
