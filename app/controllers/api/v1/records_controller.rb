@@ -52,6 +52,6 @@ class Api::V1::RecordsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def record_params
-    params.require(:record).permit(:item_id, :list_id, :quantity)
+    params.require(:record).permit(:item_id, :list_id, :quantity, :completed)
   end
 end
