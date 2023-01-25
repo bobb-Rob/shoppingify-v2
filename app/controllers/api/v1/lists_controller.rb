@@ -16,7 +16,13 @@ class Api::V1::ListsController < ApiController
     if @list
       render json: @list
     else
-      render json: { id: nil, name: 'shopping List', status: 'No active list' }, status: :unprocessable_entity
+      # redirect_to action: :create
+      @list = List.new(name: 'shopping List', status: 'active', user_id: current_user.id)
+      if @list.save
+        render json: @list, status: :created
+      else
+        render json: @list.errors, status: :unprocessable_entity
+      end
     end
   end
 
