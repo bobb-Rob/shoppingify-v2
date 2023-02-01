@@ -3,9 +3,12 @@ class Api::V1::ListsController < ApiController
 
   # GET /lists
   def index
-    @lists = current_user.lists
-
-    render json: @lists
+    @lists = current_user.lists.where.not(status: "active")
+    if @lists
+      render json: @lists
+    else
+      render json: { errors: @lists.errors }
+    end
   end
 
   # Get single active list - /list/active
