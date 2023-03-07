@@ -3,7 +3,7 @@ class Api::V1::ListsController < ApiController
 
   # GET /lists
   def index
-    @lists = current_user.lists.where.not(status: "active")
+    @lists = current_user.lists.where.not(status: 'active')
     if @lists
       render json: @lists
     else
@@ -12,7 +12,7 @@ class Api::V1::ListsController < ApiController
   end
 
   # Get single active list - /list/active
-  def active   
+  def active
     @list = List.where(status: 'active', user_id: current_user)[0]
     if @list
       render json: @list
