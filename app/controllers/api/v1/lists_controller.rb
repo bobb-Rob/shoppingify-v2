@@ -3,15 +3,16 @@ class Api::V1::ListsController < ApiController
 
   # GET /lists
   def index
-    @lists = current_user.lists
-
-    render json: @lists
+    @lists = current_user.lists.where.not(status: 'active')
+    if @lists
+      render json: @lists
+    else
+      render json: { errors: @lists.errors }
+    end
   end
 
   # Get single active list - /list/active
   def active
-    # Find the list with status: active - Since only one list can have the value active.
-    # @list = current_user.lists.find { |list| list.status === 'active' }
     @list = List.where(status: 'active', user_id: current_user)[0]
     if @list
       render json: @list

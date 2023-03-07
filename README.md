@@ -9,7 +9,7 @@
     - [Key Features](#key-features)
     - [Functionalities](#Functionalities)
   - [🚀 Live Demo](#live-demo)
-  - [🚀 Frontend Repository](#Frontend-Repository)
+  - [🚀 Frontend Repository](#frontend-repository)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -89,7 +89,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Frontend Repository <a name="Frontend-Repository"></a>
+## 🚀 Frontend Repository <a name="frontend-repository"></a>
 
 - [Frontend Repository](https://github.com/bobb-Rob/shoppingify)
 
