@@ -1,0 +1,2 @@
+class DefaultCategory < ApplicationRecord
+end
