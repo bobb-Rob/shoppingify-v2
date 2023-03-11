@@ -33,3 +33,5 @@ DEFAULT_CATEGORIES = [
   { name: 'Party Supplies' },
   { name: 'Fitness' }
 ]
+
+# Please generate a ruby array of items, five items each for each category above. items has name, note, image, category fields. Use category name above for the item category field

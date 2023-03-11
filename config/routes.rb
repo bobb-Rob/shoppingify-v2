@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'default_categories/index'
+  get 'default_items/index'
   root 'client#index'
 
   use_doorkeeper

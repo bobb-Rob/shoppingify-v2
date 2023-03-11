@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :lists
   has_many :categories
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

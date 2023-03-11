@@ -3,11 +3,22 @@ class Api::V1::ListsController < ApiController
 
   # GET /lists
   def index
-    @lists = current_user.lists.where.not(status: 'active')
-    if @lists
-      render json: @lists
+    # if current_user is available, get all lists for current user, else get all lists
+    if current_user?
+      @lists = current_user.lists.includes(:status).where.not(status: 'active')
+      # Use tenary operator to check if @lists is true or false, return @lists if true, else return { error: @lists.errors }
+      if @lists
+        render json: @lists
+      else
+        render json: { error: @lists.errors }
+      end
     else
-      render json: { errors: @lists.errors }
+      @lists = List.all
+      if @lists
+        render json: @lists
+      else
+        render json: { error: @lists.errors }
+      end
     end
   end
 
