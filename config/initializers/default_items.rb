@@ -171,30 +171,3 @@ DEFAULT_ITEMS = [
   { name: 'Dumbbells', note: 'Includes dumbbells and rack', image: "dumbbells.jfif", default_category: 'Fitness' },
   { name: 'Yoga Mat', note: 'Includes yoga mat and yoga blocks', image: "yoga-mat.jpg", default_category: 'Fitness' },  
 ]
-
-# rails aborted!
-# fatal: No live threads left. Deadlock?
-# 7 threads, 7 sleeps current:0x000001de835436c0 main thread:0x000001def807b330
-
-# I get this after a migration successfully migrated. Why?
-
-# Here are a few tips for optimizing the database queries to find DefaultCategory instances in your migration code:
-
-# Use an index: If the name column on the DefaultCategory table is not already indexed, you can add an index to speed up the database query. This can be done in a separate migration file using the following command:
-# ruby
-# Copy code
-# add_index :default_categories, :name
-# Use a bulk find: Instead of running a separate query for each item to find its DefaultCategory instance, you can use the where method to find all of the necessary categories in a single query. For example:
-# ruby
-# Copy code
-# category_names = DEFAULT_ITEMS.map { |item| item[:default_category] }.uniq
-# categories = DefaultCategory.where(name: category_names)
-# This will retrieve all the DefaultCategory instances with names that match any of the names in the category_names array.
-
-# Use eager loading: If you need to access associated records when finding DefaultCategory instances, you can use eager loading to fetch the associated records in a single query. For example, if each DefaultCategory has many associated DefaultItems, you can use the includes method to load all associated items for the categories retrieved in the previous step:
-# ruby
-# Copy code
-# categories = DefaultCategory.where(name: category_names).includes(:default_items)
-# This will load all associated DefaultItem records for each DefaultCategory instance in a single query, rather than loading them individually in subsequent queries.
-
-# By following these optimization techniques, you should be able to speed up the database queries in your migration code and reduce the risk of encountering a deadlock.

@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :records, dependent: :destroy
   has_many :lists, through: :records
   # Associate the image with the item thorugh Active Storage
-  has_one_attached :image
+  has_one_attached :image_attachment
 
   validates_uniqueness_of :name, scope: :user_id, message: '=> You have an item with the same name already'
   validates :name, presence: true

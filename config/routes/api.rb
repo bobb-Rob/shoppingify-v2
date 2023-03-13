@@ -9,7 +9,7 @@ namespace :api do
     resources :records
     resources :lists
     # get default categories only index
-    resources :default_categories, only: %i[index]
+    resources :default_categories, only: %i[index create]
     get 'list/active', to: 'lists#active'
     get 'users/current', to: 'users#current'
   end
