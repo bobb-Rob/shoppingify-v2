@@ -12,33 +12,36 @@ class Api::V1::DefaultCategoriesController < ApiController
     else
       default_categories = DefaultCategory.where(id: default_category_ids).includes(:default_items)
            
+      success = true
       categories = create_categories(default_categories, current_user.id)    
+      success &&= categories.present?   
   
-      create_items(default_categories, categories, current_user.id)
-  
-      transfer_image_attachments(default_categories)
+      new_items = create_items(default_categories, categories, current_user.id)
+      success &&= true
 
-      render json: { message: 'Default categories were created successfully' }, status: :ok
+      transfer_image_attachments(default_categories)
+      success &&= true
+
+      if success
+        render json: { message: 'Default categories were created successfully' }, status: :ok
+      else
+        render json: { errors: 'Failed to create default categories' }, status: :unprocessable_entity
+      end
     end
   end
 
   private
 
   def create_categories(default_categories, user_id)
-  
     new_categories = default_categories.map do |default_category|
       Category.new(name: default_category.name, user_id: user_id)
     end
     Category.import(new_categories)
-
     new_categories
   end
 
   def create_items(default_categories, categories, user_id)
-    return [] if default_categories.empty?
-
     new_items = []
-
     default_categories.each_with_index do |default_category, index|
       default_category.default_items.each do |default_item|
         item = Item.new(
@@ -48,11 +51,12 @@ class Api::V1::DefaultCategoriesController < ApiController
           note: default_item.note,
           image: 'https://media.istockphoto.com/id/171302954/photo/groceries.jpg?s=612x612&w=0&k=20&c=D3MmhT5DafwimcYyxCYXqXMxr1W25wZnyUf4PF1RYw8='
         )
-
         new_items << item
       end
     end
+    
     Item.import(new_items)
+    new_items
   end
 
   def transfer_image_attachments(default_categories)
@@ -68,6 +72,6 @@ class Api::V1::DefaultCategoriesController < ApiController
           end
         end
       end
-    end
+    end   
   end
 end
