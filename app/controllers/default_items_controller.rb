@@ -1,6 +1,16 @@
 class DefaultItemsController < ApplicationController
   def index
-    # render json: DefaultItem.all with image url from active storage
-    render json: DefaultItem.all.map { |item| item.as_json.merge(image_url: url_for(item.image_attachment)) }   
+    default_items = DefaultItem.all.map do |item|
+      item.as_json.merge(
+        image: url_for(item.image_attachment),
+        category_name: item.default_category.name,
+        category: {
+          id: item.default_category.id,
+          name: item.default_category.name
+        }
+      )
+    end
+  
+    render json: default_items
   end
 end
