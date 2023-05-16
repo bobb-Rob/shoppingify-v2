@@ -17,7 +17,7 @@ class Api::V1::DefaultCategoriesController < ApiController
       categories = create_categories(default_categories, current_user.id)
       success &&= categories.present?
 
-      new_items = create_items(default_categories, categories, current_user.id)
+      create_items(default_categories, categories, current_user.id)
       success &&= true
 
       transfer_image_attachments(default_categories)
