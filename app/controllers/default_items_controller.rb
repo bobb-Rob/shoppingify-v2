@@ -10,7 +10,7 @@ class DefaultItemsController < ApplicationController
         }
       )
     end
-  
+
     render json: default_items
   end
 end

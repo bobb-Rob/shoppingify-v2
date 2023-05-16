@@ -1,6 +1,8 @@
 class DefaultCategoriesController < ApplicationController
   def index
-    categories_with_items = DefaultCategory.includes(default_items: {image_attachment_attachment: :blob}).map do |category|
+    categories_with_items = DefaultCategory.includes(
+      default_items: { image_attachment_attachment: :blob }
+    ).map do |category|
       {
         id: category.id,
         name: category.name,

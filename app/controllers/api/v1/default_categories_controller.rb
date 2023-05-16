@@ -4,18 +4,19 @@ class Api::V1::DefaultCategoriesController < ApiController
     render json: DefaultCategory.all, only: %i[name id]
   end
 
-  def create  
-    default_category_ids = params[:selectedCategoriesIds]   
+  def create
+    default_category_ids = params[:selectedCategoriesIds]
     if default_category_ids.empty?
       # return an error message - no default_category_ids were provided, please provide default_category_ids
-      render json: { errors: 'No default_category_ids were provided, please provide default_category_ids' }, status: :unprocessable_entity
+      render json: { errors: 'No default_category_ids were provided, please provide default_category_ids' },
+             status: :unprocessable_entity
     else
       default_categories = DefaultCategory.where(id: default_category_ids).includes(:default_items)
-           
+
       success = true
-      categories = create_categories(default_categories, current_user.id)    
-      success &&= categories.present?   
-  
+      categories = create_categories(default_categories, current_user.id)
+      success &&= categories.present?
+
       new_items = create_items(default_categories, categories, current_user.id)
       success &&= true
 
@@ -34,7 +35,7 @@ class Api::V1::DefaultCategoriesController < ApiController
 
   def create_categories(default_categories, user_id)
     new_categories = default_categories.map do |default_category|
-      Category.new(name: default_category.name, user_id: user_id)
+      Category.new(name: default_category.name, user_id:)
     end
     Category.import(new_categories)
     new_categories
@@ -46,7 +47,7 @@ class Api::V1::DefaultCategoriesController < ApiController
       default_category.default_items.each do |default_item|
         item = Item.new(
           name: default_item.name,
-          user_id: user_id,
+          user_id:,
           category_id: categories[index].id,
           note: default_item.note,
           image: 'https://media.istockphoto.com/id/171302954/photo/groceries.jpg?s=612x612&w=0&k=20&c=D3MmhT5DafwimcYyxCYXqXMxr1W25wZnyUf4PF1RYw8='
@@ -54,7 +55,7 @@ class Api::V1::DefaultCategoriesController < ApiController
         new_items << item
       end
     end
-    
+
     Item.import(new_items)
     new_items
   end
@@ -63,15 +64,15 @@ class Api::V1::DefaultCategoriesController < ApiController
     default_categories.each do |default_category|
       default_category.default_items.each do |default_item|
         item = Item.find_by(name: default_item.name)
-          
-        if default_item.image_attachment.attached?
-          begin
-            item.image_attachment.attach(default_item.image_attachment.blob)
-          rescue => e
-            item.errors.add(:image_attachment, "could not be transferred: #{e.message}")
-          end
+
+        next unless default_item.image_attachment.attached?
+
+        begin
+          item.image_attachment.attach(default_item.image_attachment.blob)
+        rescue StandardError => e
+          item.errors.add(:image_attachment, "could not be transferred: #{e.message}")
         end
       end
-    end   
+    end
   end
 end
