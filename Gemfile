@@ -24,6 +24,9 @@ gem 'byebug', '~> 11.1', '>= 11.1.3'
 # Active model serializers
 gem 'active_model_serializers'
 
+# activerecord-import
+gem 'activerecord-import'
+
 # Use device for authentication
 gem 'devise'
 
