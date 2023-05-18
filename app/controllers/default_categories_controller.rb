@@ -14,7 +14,7 @@ class DefaultCategoriesController < ApplicationController
   private
 
   def map_items(items)
-    items.map do |item|   
+    items.map do |item|
       {
         id: item.id,
         name: item.name,
