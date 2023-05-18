@@ -1,0 +1,17 @@
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+C:/Ruby31-x64/bin/ruby.exe -I C:/Ruby31-x64/lib/ruby/3.1.0 -r ./siteconf20230518-17332-enjduk.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= clean
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\=
+generating debug-x64-mingw-ucrt.def
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20230518-17332-d50p72/debug

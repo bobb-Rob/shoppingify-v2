@@ -51,15 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_231440) do
   end
 
   create_table "default_categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_default_categories_on_name"
   end
 
   create_table "default_items", force: :cascade do |t|
     t.string "name"
     t.string "note"
+    t.text "image"
     t.bigint "default_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
