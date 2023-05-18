@@ -1,8 +1,0 @@
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/nio4r-2.5.9/ext/nio4r
-C:/Ruby32-x64/bin/ruby.exe -I C:/Ruby32-x64/lib/ruby/3.2.0 extconf.rb
-
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/nio4r-2.5.9/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20230518-4716-h8ecty sitelibdir\=./.gem.20230518-4716-h8ecty clean
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/nio4r-2.5.9/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20230518-4716-h8ecty sitelibdir\=./.gem.20230518-4716-h8ecty
-make failedNo such file or directory - make

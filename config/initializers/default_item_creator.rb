@@ -23,6 +23,9 @@ class DefaultItemCreator
       # Find the category
       category = category_table[item[:default_category]]    
       item.merge!(default_category: category)
+
+      # Check if image file exists
+      next unless item[:image] && image_files_hash.key?(File.basename(item[:image], File.extname(item[:image])).capitalize)
   
       # Create the item
       new_item = DefaultItem.create(item.except(:image))       

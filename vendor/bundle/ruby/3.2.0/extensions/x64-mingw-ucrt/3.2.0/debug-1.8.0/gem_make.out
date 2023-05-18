@@ -1,9 +1,0 @@
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
-C:/Ruby32-x64/bin/ruby.exe -I C:/Ruby32-x64/lib/ruby/3.2.0 extconf.rb
-creating Makefile
-
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20230518-4716-92p48h sitelibdir\=./.gem.20230518-4716-92p48h clean
-current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20230518-4716-92p48h sitelibdir\=./.gem.20230518-4716-92p48h
-make failedNo such file or directory - make
