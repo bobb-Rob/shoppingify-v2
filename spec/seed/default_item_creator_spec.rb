@@ -1,4 +1,4 @@
-require_relative '../../config/initializers/default_item_creator.rb'
+require_relative '../../config/initializers/default_item_creator'
 
 RSpec.describe DefaultItemCreator do
   describe '.read_image_files' do
@@ -22,8 +22,8 @@ RSpec.describe DefaultItemCreator do
     it 'returns a hash with File objects as values' do
       expect(@result_hash['Apple1']).to be_an_instance_of(File)
       expect(@result_hash['Banana1']).to be_an_instance_of(File)
-    end    
-  end 
+    end
+  end
 
   # describe '.process_item_batch' do
   #   it 'processes a batch of items and attaches the corresponding image file' do
@@ -58,16 +58,18 @@ RSpec.describe DefaultItemCreator do
   #       { name: 'Apple', default_category: 'Fruit', image: 'Apple1.jpg' },
   #       { name: 'Banana', default_category: 'Fruit', image: 'Banana1.jpg' }
   #     ]
-      
-  #     allow(described_class).to receive(:read_image_files).and_return({ 'Apple1' => instance_of(File), 'Banana1' => instance_of(File) })
+
+  #     allow(described_class).to receive(:read_image_files).and_return({ 'Apple1' => instance_of(File),
+  # stance_of(File) })
   #     allow(described_class).to receive(:find_categories_by_name).and_return({ 'Fruit' => category })
   #     allow(described_class).to receive(:process_item_batch)
-      
+
   #     described_class.create_default_items(image_path, batch_size, sleep_time)
 
   #     expect(described_class).to have_received(:read_image_files).with(image_path).once
   #     expect(described_class).to have_received(:find_categories_by_name).with([ 'Fruit' ]).once
-  #     expect(described_class).to have_received(:process_item_batch).with(items, { 'Fruit' => category }, { 'Apple1' => instance_of(File), 'Banana1' => instance_of(File) }).twice
+  #     expect(described_class).to have_received(:process_item_batch).with(items,
+  # { 'Fruit' => category }, { 'Apple1' => instance_of(File), 'Banana1' => instance_of(File) }).twice
   #   end
   # end
 end
