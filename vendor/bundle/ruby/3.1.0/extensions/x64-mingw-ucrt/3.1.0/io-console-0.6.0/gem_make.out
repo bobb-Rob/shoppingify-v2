@@ -1,0 +1,17 @@
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+C:/Ruby31-x64/bin/ruby.exe -I C:/Ruby31-x64/lib/ruby/3.1.0 -r ./siteconf20230518-17332-9r826k.rb extconf.rb
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= clean
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\=
+generating console-x64-mingw-ucrt.def
+compiling console.c
+linking shared-object io/console.so
+
+current directory: C:/Users/BOBB-ROB/Desktop/projects/shoppingify/shoppingify-backend-v2/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 console.so ./.gem.20230518-17332-f1ab9w/io
